@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awsum - Online Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <h1>Awsum</h1>
+            <a href="#cart" class="cart-link">
+                Cart: <span id="headerCartCount">0</span> items
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <h2>Find what you need</h2>
+            <p>Browse products, add them to your cart and get a special discount at checkout.</p>
+        </section>
+
+        <section class="filters" aria-label="Product filters">
+            <label for="searchInput">Search</label>
+            <input type="text" id="searchInput" placeholder="Search products...">
+
+            <label for="categoryFilter">Category</label>
+            <select id="categoryFilter">
+                <option value="all">All categories</option>
+                <option value="Tech">Tech</option>
+                <option value="Fashion">Fashion</option>
+                <option value="Home">Home</option>
+                <option value="Stationery">Stationery</option>
+            </select>
+
+            <label for="sortSelect">Sort by</label>
+            <select id="sortSelect">
+                <option value="default">Default</option>
+                <option value="low">Price: Low to High</option>
+                <option value="high">Price: High to Low</option>
+                <option value="name">Name: A to Z</option>
+            </select>
+        </section>
+
+        <div id="notice" class="notice" role="status" hidden></div>
+
+        <div class="shop-layout">
+            <section class="products-section">
+                <div class="section-title">
+                    <h2>Products</h2>
+                    <span id="productCount">8 products</span>
+                </div>
+
+                <div id="productGrid" class="product-grid"></div>
+
+                <p id="noResults" class="no-results" hidden>
+                    No products found. Try a different search.
+                </p>
+            </section>
+
+            <aside id="cart" class="cart-panel">
+                <h2>Your Cart (<span id="cartTitleCount">0</span>)</h2>
+
+                <div id="cartItems" class="cart-items">
+                    <p class="empty-cart">Your cart is empty.</p>
+                </div>
+
+                <div class="coupon-section">
+                    <label for="couponInput">Discount coupon</label>
+
+                    <div class="coupon-row">
+                        <input type="text" id="couponInput"
+                            placeholder="Enter coupon code">
+
+                        <button type="button" id="applyCouponButton"
+                            class="button secondary-button">
+                            Apply
+                        </button>
+                    </div>
+
+                    <p id="couponMessage" class="coupon-message">
+                        Use SAVE10 or FLAT100.
+                    </p>
+                </div>
+
+                <div class="price-summary">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotalAmount">₹0</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Discount</span>
+                        <span id="discountAmount">- ₹0</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>Free</span>
+                    </div>
+
+                    <div class="summary-row total-row">
+                        <strong>Total payable</strong>
+                        <strong id="totalAmount">₹0</strong>
+                    </div>
+                </div>
+
+                <button type="button" id="checkoutButton"
+                    class="button checkout-button" disabled>
+                    Proceed to Checkout
+                </button>
+            </aside>
+        </div>
+
+        <section id="checkoutSection" class="checkout-section" hidden>
+            <h2>Checkout</h2>
+
+            <p class="checkout-intro">
+                Enter your details to complete this demo order.
+            </p>
+
+            <div class="checkout-layout">
+                <form id="checkoutForm">
+                    <div class="form-group">
+                        <label for="customerName">Full name</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customerEmail">Email address</label>
+                        <input type="email" id="customerEmail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customerAddress">Delivery address</label>
+                        <textarea id="customerAddress" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="paymentMethod">Payment method</label>
+                        <select id="paymentMethod">
+                            <option value="Cash on Delivery">Cash on Delivery</option>
+                            <option value="UPI (demo only)">UPI (demo only)</option>
+                        </select>
+                    </div>
+
+                    <p class="demo-message">
+                        This is a college project demo. No real payment will be taken.
+                    </p>
+
+                    <div class="checkout-actions">
+                        <button type="button" id="backToCartButton"
+                            class="button secondary-button">
+                            Back to Cart
+                        </button>
+
+                        <button type="submit" class="button checkout-button">
+                            Place Demo Order
+                        </button>
+                    </div>
+                </form>
+
+                <div class="checkout-summary">
+                    <h3>Order Summary</h3>
+
+                    <p>
+                        Number of items:
+                        <strong id="checkoutItemCount">0</strong>
+                    </p>
+
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="checkoutSubtotal">₹0</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Discount</span>
+                        <span id="checkoutDiscount">- ₹0</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>Free</span>
+                    </div>
+
+                    <div class="summary-row total-row">
+                        <strong>Total payable</strong>
+                        <strong id="checkoutTotal">₹0</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <p>Awsum - Simple Online Shopping for You</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
